@@ -1,0 +1,76 @@
+#sorting 2 lists
+l1=[1,4,5,7,9,10]
+l2=[2,3,6,8]
+res=[]
+i=0
+j=0
+while i<len(l1) and j<len(l2):
+    if l1[i]<l2[j]:
+        res.append(l1[i])
+        i+=1
+    else:
+        res.append(l2[j])
+        j+=1
+while i<len(l1):
+    res.append(l1[i])
+    i+=1
+while j<len(l2):
+    res.append(l2[j])
+    j+=1
+print(res)
+#*-----------------------------------------------------
+#Mergesort:
+def div(arr):
+    if len(arr)<=1:
+        return arr
+    mid=len(arr)//2
+    left=div(arr[:mid])
+    right=div(arr[mid:])
+    return merge(left,right)
+
+def merge(left,right):
+    res=[]
+    i=0
+    j=0
+    while(i<len(left) and j<len(right)):
+        if left[i]<right[j]:
+            res.append(left[i])
+            i+=1
+        else:
+            res.append(right[j])
+            j+=1
+    while i<len(left):
+            res.append(left[i])
+            i+=1
+    while j<len(right):
+            res.append(right[j])
+            j+=1
+    return res
+l=[3,2,1,5,4,6]
+print(div(l))
+#*-----------------------------------------------------
+#sorting
+a=[5,3,3,5,2,2,2,1,1,4,4,3,1]
+dict={}
+for i in a:
+    if i not in dict:
+        dict[i]=1
+    else:
+        dict[i]+=1
+m=max(dict.values())
+b=[[] for i in range(m+1)]
+for i in dict:
+    b[dict[i]].append(i)
+res=[]
+print(b)
+for i in range(1,len(b)):
+    for j in b[i]:
+        res.extend([j]*i)
+print(res)
+
+
+
+
+
+
+
